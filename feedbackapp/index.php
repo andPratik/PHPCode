@@ -1,4 +1,4 @@
-<?php include "config\database.php"; ?>
+<?php include 'inc/header.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,31 +8,64 @@
     <title>Feedback</title>
 </head>
 <?php
+$name = $email = $feedback = "";
+$nameErr = $emailErr = $feedbackErr = "";
+
+// form sumit
 if (isset($_POST['submit'])) {
 
-    // $name =  htmlspecialchars($_POST['username']);
-    // $email = htmlspecialchars($_POST['email']);
-    // $feedback =  htmlspecialchars($_POST['feedback']);
+    if (empty($_POST["name"])) {
+        $nameErr = 'name is require';
+    } else {
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
 
-    $name = filter_input(INPUT_POST, 'username');
-    $email = filter_input(INPUT_POST, 'email');
-    $feedback = filter_input(INPUT_POST, 'feedback');
+    if (empty($_POST["email"])) {
+        $emailErr = 'email is required';
+    } else {
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+    if (empty($_POST["feedback"])) {
+        $feedbackErr = 'feedback is required';
+    } else {
+        $feedback = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+
+    if (empty($nameErr) && empty($emailErr) && empty($feedbackErr)) {
+        // add to the databse
+        $sql = "INSERT INTO feedback (name,email,feedback) VALUES('$name','$email','$feedback')";
+        if (mysqli_query($con, $sql)) {
+            //succes
+            echo "suscces";
+        } else {
+            echo "error:" . mysqli_error($con);
+        }
+    }
 }
+
 ?>
 
 <body>
 
-    <!-- <a href="<?php echo $_SERVER['PHP_SELF']; ?>?name='pratik'&age=24"> click </a> -->
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
         <div class="">
-            <label for="username">name:</label>
-            <input type="text" name="username">
+            <label for="name">name:</label>
+            <input type="text" name="name">
+            <div style="color: red;">
+                <?php echo $nameErr ?>
+            </div>
         </div>
         <div class=""><label for="email">email:</label>
             <input type="email" name="email">
+            <div style="color: red;">
+                <?php echo $emailErr ?>
+            </div>
         </div>
         <div class=""><label for="feedback">feedback:</label>
             <input type="text" name="feedback">
+            <div style="color: red;">
+                <?php echo $feedbackErr ?>
+            </div>
         </div>
         <input type="submit" value="submit" name="submit">
 
