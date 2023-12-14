@@ -15,31 +15,31 @@ $feedback = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 <!-- checking for empty data -->
 <?php if (empty($feedback)) : ?>
-    
+
     <p>there is no feedback</p>
 <?php endif ?>
 
+<div class="feed">
 
-<style>
-    .date {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 2%;
+    <!-- itrating over the data using loop -->
+    <?php foreach ($feedback as $item) :  ?>
 
-    }
-</style>
-<!-- itrating over the data using loop -->
-<?php foreach ($feedback as $item) :  ?>
-    <div class="" style="background-color:#adadad; padding: 3%; margin:2% ; text-align:center;position:relative">
+        <!-- <div class="ele2">
+            <div class="date">
+            </div>
+            <div class="ele3">
+            </div>
+            <div class="ele3" >
+               
 
-        <div class="date"><?php echo $item['date'] ?>
+            </div>
+            
+        </div> -->
+        <div class="feed">
+            <p class="name"><?php echo $item['name'] ?></p>
+            <p class="date"><?php echo $item['date'] ?></p>
+            <p> <?php echo $item["feedback"] ?></p>
         </div>
-        <div class="" style=" padding:2px; margin:5px 0">
-            <?php echo $item["feedback"] ?>
 
-        </div>
-        <div class=""><?php echo $item['name'] ?>
-        </div>
-    </div>
-<?php endforeach ?>
+    <?php endforeach ?>
+</div>

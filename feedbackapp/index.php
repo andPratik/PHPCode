@@ -1,12 +1,5 @@
 <?php include 'inc/header.php' ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
-</head>
 <?php
 $name = $email = $feedback = "";
 $nameErr = $emailErr = $feedbackErr = "";
@@ -45,23 +38,24 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<body>
 
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-        <div class="">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="form">
+        <h1 style="text-align: center; "> feedback form </h1>
+
+        <div class="ele1">
             <label for="name">name:</label>
             <input type="text" name="name">
             <div style="color: red;">
                 <?php echo $nameErr ?>
             </div>
         </div>
-        <div class=""><label for="email">email:</label>
+        <div class="ele1"><label for="email">email:</label>
             <input type="email" name="email">
             <div style="color: red;">
                 <?php echo $emailErr ?>
             </div>
         </div>
-        <div class=""><label for="feedback">feedback:</label>
+        <div class="ele1"><label for="feedback">feedback:</label>
             <input type="text" name="feedback">
             <div style="color: red;">
                 <?php echo $feedbackErr ?>
