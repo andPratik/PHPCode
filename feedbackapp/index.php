@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
         <div class="ele1"><label for="feedback">feedback:</label>
-            <input type="text" name="feedback">
+            <input type="" name="feedback">
             <div style="color: red;">
                 <?php echo $feedbackErr ?>
             </div>

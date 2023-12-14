@@ -21,7 +21,7 @@ body {
     margin-top: 0.2rem;
     margin-bottom: 3rem;
     width: 80%;
-    height: 4rem;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -46,7 +46,8 @@ a {
     flex-direction: column;
     gap: 3%;
     min-width: 30%;
-    aspect-ratio: 1/1;
+
+    
 
     padding: 4%;
     margin: 3%;
