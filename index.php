@@ -19,3 +19,4 @@ $info = [
 ]];
 // echo "my name is $info[0][name] $info[0][surname] <br> and my age is $info[0][age] wight is $info[0][weight] ";
 echo $info[0]['name'];
+ <a href="./feedback/"> feedback app</a>
